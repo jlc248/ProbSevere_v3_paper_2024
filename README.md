@@ -1,8 +1,8 @@
 # ProbSevere v3 paper 2024
-Scripts to train and evaluate gradient-boosted decision trees like those in ProbSevere v3. Data is found here:
+Scripts to train and evaluate gradient-boosted decision trees like those in ProbSevere v3. 
 
 ## Install Mamba
-Follow the [instructions]([url](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html)) to install `mamba`. You can also use `conda`, but I've found `mamba` tends to be faster and more robust.
+Follow the [instructions](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) to install `mamba`. You can also use `conda`, but I've found `mamba` tends to be faster and more robust.
 
 ## Dowload datasets
 These datasets contain storm attributes for each storm at each scan/observation time. Each storm has a unique ID.
