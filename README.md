@@ -154,7 +154,7 @@ The output files are:
 -  `val_lab_pred.pkl` (contains the validation labels and final predictions)
 -  `attributes_diagram.png`
 -  `performance_diagram.png`
-  -  It should be noted that CSI here is: `CSI = hits / (hits + misses + false_alarms)`, which is different than the CSI computation in the paper.
+    -  It should be noted that CSI here is: `CSI = hits / (hits + misses + false_alarms)`, which is different than the CSI computation in the paper.
 -  `feature_importance_gain.png`
 -  `feature_importance_split.png`
 
@@ -162,7 +162,7 @@ The output files are:
 
 <img src="https://github.com/jlc248/ProbSevere_v3_paper_2024/assets/19976290/5d74fe92-db90-46fb-b9a4-590162292ccf" width=40%>
 
-<img src="https://github.com/jlc248/ProbSevere_v3_paper_2024/assets/19976290/bbb09706-9f5c-420c-a15b-3d7660fe41c9" width=40%>
+<img src="https://github.com/jlc248/ProbSevere_v3_paper_2024/assets/19976290/bbb09706-9f5c-420c-a15b-3d7660fe41c9" width=75%>
 
 
 
