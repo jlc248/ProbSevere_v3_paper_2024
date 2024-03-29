@@ -113,7 +113,7 @@ elev: Elevation above sea level [m]
 ```
 Use the list above and your knowledge of severe weather to modify the predictor lists in `train_LGBM_mode.py`. These lists are approximately on lines 125-150, with different blocks for the different hazard-type models. Once you have your predictor list configured, you can start training a model.
 
-#### Help message
+### Help message
 
 ```
 (PSdemo) [user@machine ProbSevere_v3_paper_2024]$ python train_LGBM_model.py -h
@@ -138,7 +138,33 @@ options:
                         Number of early stopping rounds. Default = 5. Make this a huge number if you don't want early stopping.
 ```
 
-The program requires a training and validation DataFrame. You can use the ones you downloaded. `--best_params` will use the pre-defined parameters from the hyperparameter optimization in Cintineo et al. (2024). The program defaults to using 40 CPU threads, and will take a few minutes to run (< 10 min). However, you can change the number of CPUs if you'd like (line 210 `params['num_threads']`).
+The program requires a training and validation DataFrame. You can use the ones you downloaded. `--best_params` will use the pre-defined parameters from the hyperparameter optimization in Cintineo et al. (2024). The program defaults to using 40 CPU threads, and will take a few minutes to run (< 10 min). However, you can change the number of CPUs if you'd like (line 210 `params['num_threads'] = 40`).
+
+### Run the training
+
+This will train a model to predict severe hail. If neither `-pt`, `-ph`, nor `-pw` are selected, the default will be to train a "all/any hazards" model.
+
+`python train_LGBM_model.py storm_atts_2018-2021.pkl storm_atts_2022.pkl -o test01/ --best_params -ph -es 5`
+
+The output files are:
+-  `lgb_classifier.pkl` (the model)
+-  `verification_scores.txt` (basic evaluation stats on the validation set)
+-  `params.pkl`
+-  `scores.pkl` (contains CSI, POD, success ratio, bias, accuracy, PSS)
+-  `val_lab_pred.pkl` (contains the validation labels and final predictions)
+-  `attributes_diagram.png`
+-  `performance_diagram.png`
+  -  It should be noted that CSI here is: `CSI = hits / (hits + misses + false_alarms)`, which is different than the CSI computation in the paper.
+-  `feature_importance_gain.png`
+-  `feature_importance_split.png`
+
+<img src="https://github.com/jlc248/ProbSevere_v3_paper_2024/assets/19976290/2c8ab40c-8a35-4f0c-beec-82e9535212c9" width=40%>
+
+<img src="https://github.com/jlc248/ProbSevere_v3_paper_2024/assets/19976290/5d74fe92-db90-46fb-b9a4-590162292ccf" width=40%>
+
+<img src="https://github.com/jlc248/ProbSevere_v3_paper_2024/assets/19976290/bbb09706-9f5c-420c-a15b-3d7660fe41c9" width=40%>
+
+
 
 
 ## Citation
