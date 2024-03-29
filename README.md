@@ -13,6 +13,16 @@ wget zenodo...
 ## Clone this project
 `git clone git@github.com:jlc248/ProbSevere_v3_paper_2024.git`
 
+## Create and activate the environment
+```
+cd ProbSevere_v3_paper_2024
+mamba env create -f PSdemo.yml
+.
+.
+.
+mamba activate PSdemo
+```
+
 ## Train a model
 Before training a model, first familiarize yourself with the dataset. There is a column for `IDs`, datetimes (`dts`), `mean_lat`, and `mean_lon` of the storm. There are also columns for hail (`hail`), wind (`wind`), and tornado (`torn`) reports. The rest of the columns in the DataFrames are potential predictors/features to use.
 
