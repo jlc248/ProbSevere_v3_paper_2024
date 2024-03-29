@@ -111,5 +111,34 @@ wind_climo: Severe wind climatology as a function of location and day-of-year []
 tor_climo: Tornado climatology as a function of location and day-of-year []
 elev: Elevation above sea level [m]
 ```
+Use the list above and your knowledge of severe weather to modify the predictor lists in `train_LGBM_mode.py`. These lists are approximately on lines 125-150, with different blocks for the different hazard-type models. Once you have your predictor list configured, you can start training a model.
+
+#### Help message
+
+```
+(PSdemo) [user@machine ProbSevere_v3_paper_2024]$ python train_LGBM_model.py -h
+usage: train_LGBM_model.py [-h] [-o OUTDIR] [-pt] [-ph] [-pw] [-bp] [-es EARLY_STOPPING_ROUNDS] train val
+
+Train and validate a LGBM GBDT. Default is to train against 'any severe' report.
+
+positional arguments:
+  train                 Training DataFrame
+  val                   Validation DataFrame
+
+options:
+  -h, --help            show this help message and exit
+  -o OUTDIR, --outdir OUTDIR
+                        Root output directory for model and figures. Default=$PWD/OUTPUT/
+  -pt, --probtor_test   Train and test a tornado only model
+  -ph, --probhail_test  Train and test a hail only model
+  -pw, --probwind_test  Train and test a wind only model
+  -bp, --best_params    Train a model with pre-defined optimal parameters (hard-coded in function). Use in conjuction with -pt, -ph, -pw or none (which
+                        would be prob any severe)
+  -es EARLY_STOPPING_ROUNDS, --early_stopping_rounds EARLY_STOPPING_ROUNDS
+                        Number of early stopping rounds. Default = 5. Make this a huge number if you don't want early stopping.
+```
+
+The program requires a training and validation DataFrame. You can use the ones you downloaded. `--best_params` will use the pre-defined parameters from the hyperparameter optimization in Cintineo et al. (2024). The program defaults to using 40 CPU threads, and will take a few minutes to run (< 10 min). However, you can change the number of CPUs if you'd like (line 210 `params['num_threads']`).
+
 
 ## Citation
