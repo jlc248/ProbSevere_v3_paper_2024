@@ -7,7 +7,14 @@ Follow the [instructions](https://mamba.readthedocs.io/en/latest/installation/ma
 ## Dowload datasets
 These datasets contain storm attributes for each storm at each scan/observation time. Each storm has a unique ID.
 ```
-wget zenodo...
+# Training data
+wget "https://zenodo.org/records/10891478/files/storm_atts_2018-2021.pkl?download=1" -O storm_atts_2018-2021.pkl
+
+# Validation data
+wget "https://zenodo.org/records/10891478/files/storm_atts_2022.pkl?download=1" -O storm_atts_2022.pkl
+
+# Test data
+wget "https://zenodo.org/records/10891478/files/storm_atts_2023.pkl?download=1" -O storm_atts_2023.pkl
 ```
 
 ## Clone this project
